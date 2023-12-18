@@ -1,0 +1,41 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <title>Recogniche - Recognise your business niche using powerful website</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		{% tailwind_css %}
+
+		<!-- Font Style -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	</head>
+
+	<body class="bg-gray-50 font-serif leading-normal">
+
+		<header class="py-10 mb-14 mx-36q grid grid-cols-4 items-center">
+			<div class="text-center ">
+				{% load static %}
+				<img src="../static/assets/logo-dark.png" alt="Logo Recogniche" class="w-[30%] mx-auto">
+			</div>
+			<div></div>
+			<div class="grid grid-cols-6 col-span-2 items-center text-center">
+				<span></span>
+				<a href="" class="text-sm text-prim-purple text-center w-fit font-raleway mx-auto ">About Us</a>
+				<a href="" class="text-sm text-prim-purple text-center w-fit font-raleway mx-auto">Documentation</a>
+				<a href="" class="text-sm text-prim-purple text-center w-fit font-raleway mx-auto">Tutorial</a>
+				<a href="" class="text-sm text-prim-purple text-center w-fit font-raleway mx-auto">Contact</a>
+				<a href="/" class="text-sm  text-center w-fit font-raleway bg-prim-purple text-prim-yellow px-3 py-2 rounded-md">Diagnose</a>
+			</div>
+		</header>
+
+		{% block content %}
+		replace me
+		{% endblock %}
+		
+		
+	</body>
+</html>

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="w-full h-full absolute z-20 bg-white opacity-70 flex preloader hidden">
+    <div class="text-center absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
+        {% load static %}
+        <img src="../static/assets/loader2.gif" alt="Logo Recogniche" class=" w-28 mx-auto animate-pulse opacity-100">
+        <p class="text-prim-purple opacity-100 font-raleway text-3xl font-bold animate-pulse">Analyzing</p>
+    </div>
+</div>
+
+<div class="container mx-auto">
+    <section class="items-center justify-center h-screen mx-10 ">
+        <div class="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] w-full">
+            <div class="text-center flex-1 w-full">
+                <h1 class="text-5xl text-prim-purple font-raleway font-bold">Optimize your Website, Grow your business</h1>
+                <p class="text-2xl text-prim-yellow font-raleway mt-4">Optimize your website today and watch your business thrive!</p>
+            </div>
+            <div class="text-center mt-8">
+                <form method="post" action="/diagnose">
+                    {% csrf_token %}
+                    <input type="text" class="border-prim-purple rounded-md font-raleway w-1/2 mt-5 text-prim-yellow font-bold" placeholder="Input Url" name="url" value="">
+                    
+                    <button class="text-sm font-raleway bg-prim-yellow px-4 h-10 text-prim-white rounded-md ml-4 scan" name="scan">Scan Website</button>
+                </form>
+                
+            </div>
+        </div>
+    </section>
+</div>
+
+{% load static %}
+<script src="../static/js/script.js"></script>
+{% endblock %}

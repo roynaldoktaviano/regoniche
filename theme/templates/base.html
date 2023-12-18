@@ -1,0 +1,51 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <title>Recogniche - Recognise your business niche using powerful website</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		{% tailwind_css %}
+
+		<!-- Font Style -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	</head>
+
+	<body class="bg-gray-50 font-serif leading-normal">
+
+		<header class="py-10 mb-14 mx-20 grid grid-cols-4 items-center absolute">
+			<div class="text-center ">
+				{% load static %}
+				<img src="../static/assets/logo-dark.png" alt="Logo Recogniche" class="w-[50%]">
+			</div>
+			<div></div>
+			<div class="grid grid-cols-6 col-span-2 items-center text-center">
+				<span></span>
+				<a href="" class="text-sm text-prim-purple text-center w-fit font-raleway mx-auto ">About Us</a>
+				<a href="" class="text-sm text-prim-purple text-center w-fit font-raleway mx-auto">Documentation</a>
+				<a href="" class="text-sm text-prim-purple text-center w-fit font-raleway mx-auto">Tutorial</a>
+				<a href="" class="text-sm text-prim-purple text-center w-fit font-raleway mx-auto">Contact</a>
+				<a href="/" class="text-sm  text-center w-fit font-raleway bg-prim-purple text-prim-yellow px-3 py-2 rounded-md">Diagnose</a>
+			</div>
+		</header>
+
+		{% block content %}
+		replace me
+		{% endblock %}
+
+
+		<footer class="mt-10 bg-prim-yellow py-6 text-center px-64 font-raleway">
+			<h2 class="text-white font-bold text-2xl">Diagonose Your Website</h2>
+			<p class="text-white text-xs mt-3">Dapatkan insight mendalam tentang kesehatan online bisnis Anda. Identifikasi potensi perbaikan, tingkatkan kecepatan, dan raih visibilitas yang lebih tinggi. Ayo, mari kita berkolaborasi untuk mengangkat website Anda ke level berikutnya. Diagnosa sekarang dan saksikan transformasi online Anda!</p>
+			<button href="/" class="mt-2 px-4 py-3 bg-prim-purple text-white text-sm mx-auto rounded-lg ">Diagnosa Website</button>
+		</footer>
+		<div class=" text-center py-3 w-full bg-prim-purple font-raleway">
+			<p class="text-white text-xs">COPYRIGHT © 2023 Recogniche. All Rights Reserved.</p>
+		</div>
+		
+		
+	</body>
+</html>

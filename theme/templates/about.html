@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="bg-[#f8f6ed]">
+    <div class="h-96 font-raleway text-3xl flex mx-20 pb-10 ">
+        <div class="mt-auto w-1/2">
+            <h1 class="font-bold mb-5 text-prim-purple"> Unleashing SEO Excellence for You!</h1>
+            <p class="text-sm leading-relaxed">Selamat datang di 'Web Wizards'! Kami adalah penyihir digital yang siap membuat bisnis Anda bersinar. Dengan keahlian SEO kami, kami membuka pintu ke kesuksesan online. Biarkan kami menjadi pemandu Anda, membantu bisnis Anda tumbuh dan bersinar di dunia digital.</p>
+        </div>
+        <div class="w-1/2 m-auto text-center"> 
+            {% load static %}
+			<img src="../static/assets/seo-gif.gif" alt="Logo Recogniche" class="w-[70%] mx-auto">
+        </div>
+    </div>
+</div>
+
+<div class="font-raleway mx-20 mb-10 text-center mt-10">
+    <p class="text-3xl font-bold italic text-prim-yellow">"Web Wisdom: <span class="text-prim-purple"> Menciptakan Kesuksesan dengan Presisi SEO!"</span></p>
+</div>
+
+<div class="mt-10 font-raleway mx-20 mb-20">
+    <div class="grid grid-cols-2 items-center">
+        <div class="pr-8">
+            <h2 class="text-2xl font-bold text-prim-yellow mb-3">Recogniche Purpose</h2>
+            <p class="text-sm leading-relaxed">Recogniche hadir dengan misi kuat: memaksimalkan unjuk kerja website Anda melalui program rekomendasi SEO yang terdepan. Dengan pendekatan yang cermat dan solusi yang terukur, kami berkomitmen membantu bisnis Anda mencapai peringkat tertinggi di mesin pencari. Dengan Recogniche, optimalkan potensi online Anda dan lihat bisnis Anda berkembang pesat dalam era digital ini.</p>
+        </div>
+        <div>
+            {% load static %}
+			<img src="../static/assets/purpose.png" alt="Logo Recogniche" class="w-[70%] mx-auto">
+        </div>
+    </div>
+</div>
+
+<div class="py-10 bg-prim-purple font-raleway">
+    <div class="mx-20 grid grid-cols-2">
+        <div class="row-span-2 text-white pr-20 my-auto">
+            <h2 class="font-bold text-6xl leading-snug">Problem apa yang di selesaikan ?</h2>
+        </div>
+        <div class=" pb-4">
+            <h3 class="font-bold text-prim-yellow text-xl">Peringkat Rendah di Mesin Pencari</h3>
+            <p class="text-xs leading-relaxed text-white mt-2">Recogniche memberikan fokus khusus pada meningkatkan peringkat website di hasil pencarian mesin pencari. Dengan menganalisis faktor-faktor seperti kecepatan situs, dan struktur halaman, program ini memberikan rekomendasi yang dapat meningkatkan posisi website Anda. Dengan begitu, calon pelanggan dapat lebih mudah menemukan dan mengakses informasi yang mereka cari, meningkatkan visibilitas dan potensi konversi bisnis Anda.</p>
+        </div>
+        <div class=" pb-4">
+            <h3 class="font-bold text-prim-yellow text-xl">Traffic Website Sedikit</h3>
+            <p class="text-xs leading-relaxed text-white mt-2">Recogniche bertujuan untuk meningkatkan visibilitas website Anda, menjadikannya lebih mudah ditemukan oleh pengguna yang mencari produk atau layanan serupa. Dengan demikian, peningkatan peringkat ini diharapkan dapat mengatasi masalah trafik rendah yang mungkin dialami oleh website Anda.</p>
+        </div>
+    </div>
+</div>
+
+<div class="mx-20 mt-16 mb-14 font-raleway">
+    <h2 class="text-2xl font-bold text-prim-yellow">Hal Yang Akan di Analisa</h2>
+    <p class="text-sm mt-2">Beberapa bagian dalam website yang akan di analisa dan diberikan rekomendasi ke User</p>
+
+    <div class="mt-10 grid grid-cols-3 gap-10">
+        <div class="text-center px-8">
+            {% load static %}
+            <img src="../static/assets/purpose.png" alt="Logo Recogniche" class="w-[50%] mx-auto">
+            <h3 class="text-xl font-bold text-prim-purple mt-3 mb-2">Website Title</h3>
+            <p class="text-xs leading-relaxed">Judul halaman berperan sentral dalam SEO dengan memberikan gambaran singkat dan menentukan peringkat di hasil pencarian. Dengan menyusun judul yang informatif dan mengandung kata kunci relevan, halaman dapat menarik perhatian mesin pencari.</p>
+        </div>
+        <div class="text-center px-8">
+            {% load static %}
+            <img src="../static/assets/purpose.png" alt="Logo Recogniche" class="w-[50%] mx-auto">
+            <h3 class="text-xl font-bold text-prim-purple mt-3 mb-2">Meta Description</h3>
+            <p class="text-xs leading-relaxed">Deskripsi header, atau meta description, berperan meningkatkan CTR dengan memberikan cuplikan singkat yang meyakinkan pengguna untuk mengklik link. Dengan deskripsi yang menarik, halaman dapat lebih efektif menarik perhatian pengguna potensial.</p>
+        </div>
+        <div class="text-center px-8">
+            {% load static %}
+            <img src="../static/assets/purpose.png" alt="Logo Recogniche" class="w-[50%] mx-auto">
+            <h3 class="text-xl font-bold text-prim-purple mt-3 mb-2">Heading Tag Order</h3>
+            <p class="text-xs leading-relaxed">Urutan tag heading, seperti H1, H2, H3, memberikan struktur hierarki pada konten, membantu mesin pencari memahami informasi. Dengan menyusun heading tags secara hierarkis, halaman dapat lebih mudah diindeks dan meningkatkan potensi peringkat di hasil pencarian.</p>
+        </div>
+
+        
+    </div>
+    <div class="w-full text-center mt-9 ">
+        <a href="" class="px-4 py-3 bg-prim-purple text-white text-sm mx-auto rounded-lg hover:bg-prim-yellow transition-colors">Lihat Dokumentasi</a>
+    </div>
+</div>
+
+
+
+{% load static %}
+<script src="../static/js/script.js"></script>
+{% endblock %}

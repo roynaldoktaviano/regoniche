@@ -1,0 +1,259 @@
+{% extends 'base_diag.html' %}
+
+{% block content %}
+
+<div class="container mx-auto">
+    <section class="items-center justify-center h-screen mx-10">
+        <div class="grid grid-cols-2 gap-x-10">
+            <div class="my-auto shadow-md {% if hasil == 'Foundational' %}shadow-red-600
+            {% elif hasil == 'Intermediate' %}shadow-orange-600
+            {% elif hasil == 'Progressing' %}shadow-yellow-500
+            {% elif hasil == 'Advanced' %}shadow-blue-600
+            {% elif hasil == 'Optimizing' %}shadow-green-600
+            {% endif %} h-full rounded-md px-8 py-11">
+                <h2 class="text-prim-purple font-raleway font-bold text-xl">SEO Score</h2>
+                <p class="text-prim-yellow text-sm font-raleway mt-2 mb-9">SEO Score shows the website's performance in terms of SEO in search engines.</p>
+                <div class="my-auto py-2 text-center w-fit px-6 rounded-lg {% if hasil == 'Foundational' %}bg-red-600
+                {% elif hasil == 'Intermediate' %}bg-orange-600
+                {% elif hasil == 'Progressing' %}bg-yellow-500
+                {% elif hasil == 'Advanced' %}bg-blue-600
+                {% elif hasil == 'Optimizing' %}bg-green-600
+                {% endif %} mx-auto">
+                    <h1 class="font-bold text-3xl text-center font-raleway text-white">{{hasil}}</h1>
+                </div>
+            </div>
+            <div class="grid relative grid-cols-3 gap-y-5 shadow-md rounded-lg px-8 py-11 {% if hasil == 'Foundational' %}shadow-red-600
+            {% elif hasil == 'Intermediate' %}shadow-orange-600
+            {% elif hasil == 'Progressing' %}shadow-yellow-500
+            {% elif hasil == 'Advanced' %}shadow-blue-600
+            {% elif hasil == 'Optimizing' %}shadow-green-600
+            {% endif %}">
+            
+                <div class="absolute px-4 py-4 {% if loadstatus == 'Lambat' %}bg-red-600
+                {% elif loadstatus == 'Sedang' %}bg-yellow-500
+                {% elif loadstatus == 'Cepat' %}bg-green-600
+                {% endif %} rounded-xl self-end ml-[26rem] mb-12">
+                    <h2 class="text-white font-bold font-raleway mb-2">Load Speed</h2>
+                    <p class="text-white text-3xl font-raleway font-bold">{{time}} s</p>
+                </div>
+                <div class="col-span-3">
+                    <h2 class="text-prim-purple font-bold font-raleway mb-2">Meta Title</h2>
+                    <p class="font-raleway text-sm text-prim-yellow">{{title}} 
+                        {% if title_stats == 'Too Short' %}
+                        <span class="text-red-600">(Too Short)</span>
+                        {% else %}
+                        <span class="text-green-600">(Ok)</span>
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col-span-3">
+                    <h2 class="text-prim-purple font-bold font-raleway mb-2">Meta Description</h2>
+                    <p class="font-raleway text-sm text-prim-yellow">{{desc}}
+
+
+                        {% if status_desc == 2 %}
+                        <span class="text-red-600">(Too Long)</span>
+                        {% elif status_desc == 1 %}
+                        <span class="text-red-600">(Too Short)</span>
+                        {% elif status_desc == 3 %}
+                        <span class="text-green-600">(Ok)</span>
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col-span-3">
+                    <h2 class="text-prim-purple font-bold font-raleway mb-2">Heading Tag Order</h2>
+                    {% if heading_stats == 0 %}
+                    <p class="text-red-600 font-raleway text-sm">{{h1}}</p>
+                    {% elif heading_stats == 1 %}
+                    <p class="text-green-600 font-raleway text-sm">{{h1}}</p>
+                    {% endif %}
+                </div>
+                <div class="col-span-3">
+                    <h2 class="text-prim-purple font-bold font-raleway mb-2">Alternative Text</h2>
+                    {% if image == 0 %}
+                    <p class="text-red-600 font-raleway text-sm">There are images that doesn’t have Alternative Text</p>
+                    {% elif image == 1 %}
+                    <p class="text-green-600 font-raleway text-sm">All images have Alternative Text</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Menampilkan Rekomendasi untuk Heading Tags -->
+        <div class="mt-16 mb-10">
+            <h2 class="text-prim-purple font-raleway font-bold text-xl">SEO Issues Recommendation</h2> 
+            <p class="text-prim-yellow font-raleway mt-3">The following are recommendations that can help you to improve the performance of your website in terms of SEO</p>
+            <div class="mt-7">
+
+                {% if title_recomen %}
+                <div class="recomen-list">
+                    <div class="w-full bg-prim-yellow rounded-md px-4 py-2 mt-20">
+                        <h2 class="text-white font-raleway text-xl">Meta Title</h2>
+                    </div>
+                    <div class="w-full rounded-br-md rounded-bl-md shadow-md px-6 py-9 font-raleway">
+                        <div class="grid grid-cols-3 gap-10">
+                            {% for recommendation in title_recomen %}
+                            <div class="grid grid-cols-8"> 
+                                <div class="px-1 py-1 w-8 text-center  text-white font-bold font-raleway h-8 rounded-full bg-red-600 row-span-2">!</div>
+                                <div class="col-span-7">
+                                    <h3 class="text-red-600 font-raleway font-bold mb-3">{{ recommendation.0 }}</h3>
+                                    <p class="text-sm font-raleway text-prim-purple text-justify">{{ recommendation.1 }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <hr class="border-prim-purple mt-16">
+                        <div class="mt-7 text-right">
+                            <input type="checkbox" name="complete" id="complete" class="border border-prim-yellow bg-transparent ">
+                            <label for="complete" class="text-sm text-prim-purple ml-2">Mark as <span class="font-bold">Complete</span></label>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                
+                {% if desc_recomen %}
+                <div class="recomen-list">
+                    <div class="w-full bg-prim-yellow rounded-md px-4 py-2 mt-20">
+                        <h2 class="text-white font-raleway text-xl">Meta Description</h2>
+                    </div>
+                    <div class="w-full rounded-br-md rounded-bl-md shadow-md px-6 py-9 font-raleway">
+                        <div class="grid grid-cols-3 gap-10">
+                            {% for recommendation in desc_recomen %}
+                            <div class="grid grid-cols-8"> 
+                                <div class="px-1 py-1 w-8 text-center  text-white font-bold font-raleway h-8 rounded-full bg-red-600 row-span-2">!</div>
+                                <div class="col-span-7">
+                                    <h3 class="text-red-600 font-raleway font-bold mb-3">{{ recommendation.0 }}</h3>
+                                    <p class="text-sm font-raleway text-prim-purple text-justify">{{ recommendation.1 }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <hr class="border-prim-purple mt-16">
+                        <div class="mt-7 text-right">
+                            <input type="checkbox" name="complete" id="complete" class="border border-prim-yellow bg-transparent ">
+                            <label for="complete" class="text-sm text-prim-purple ml-2">Mark as <span class="font-bold">Complete</span></label>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+
+                {% if heading_recomen %}
+                <div class="recomen-list">
+                    <div class="w-full bg-prim-yellow rounded-md px-4 py-2">
+                        <h2 class="text-white font-raleway text-xl">Heading Tags Order</h2>
+                    </div>
+                    <div class="w-full rounded-br-md rounded-bl-md shadow-md px-6 py-9 font-raleway">
+                        <div class="grid grid-cols-3 gap-10">
+                            {% for recommendation in heading_recomen %}
+                            <div class="grid grid-cols-8"> 
+                                <div class="px-1 py-1 w-8 text-center  text-white font-bold font-raleway h-8 rounded-full bg-red-600 row-span-2">!</div>
+                                <div class="col-span-7">
+                                    <h3 class="text-red-600 font-raleway font-bold mb-3">{{ recommendation.0 }}</h3>
+                                    <p class="text-sm font-raleway text-prim-purple text-justify">{{ recommendation.1 }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <hr class="border-prim-purple mt-16">
+                        <div class="mt-7 text-right">
+                            <input type="checkbox" name="complete" id="complete" class="border border-prim-yellow bg-transparent ">
+                            <label for="complete" class="text-sm text-prim-purple ml-2">Mark as <span class="font-bold">Complete</span></label>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+
+                {% if alt_recomen %}
+                <div class="recomen-list">
+                    <div class="w-full bg-prim-yellow rounded-md px-4 py-2 mt-20">
+                        <h2 class="text-white font-raleway text-xl">Alternative Text</h2>
+                    </div>
+                    <div class="w-full rounded-br-md rounded-bl-md shadow-md px-6 py-9 font-raleway">
+                        <div class="grid grid-cols-3 gap-10">
+                            {% for recommendation in alt_recomen %}
+                            <div class="grid grid-cols-8"> 
+                                <div class="px-1 py-1 w-8 text-center  text-white font-bold font-raleway h-8 rounded-full bg-red-600 row-span-2">!</div>
+                                <div class="col-span-7">
+                                    <h3 class="text-red-600 font-raleway font-bold mb-3">{{ recommendation.0 }}</h3>
+                                    <p class="text-sm font-raleway text-prim-purple text-justify">{{ recommendation.1 }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <hr class="border-prim-purple mt-16">
+                        <div class="mt-7 text-right">
+                            <input type="checkbox" name="complete" id="complete" class="border border-prim-yellow bg-transparent ">
+                            <label for="complete" class="text-sm text-prim-purple ml-2">Mark as <span class="font-bold">Complete</span></label>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+
+                {% if og_recomen %}
+                <div class="recomen-list">
+                    <div class="w-full bg-prim-yellow rounded-md px-4 py-2 mt-20">
+                        <h2 class="text-white font-raleway text-xl">OG Image</h2>
+                    </div>
+                    <div class="w-full rounded-br-md rounded-bl-md shadow-md px-6 py-9 font-raleway">
+                        <div class="grid grid-cols-3 gap-10">
+                            {% for recommendation in og_recomen %}
+                            <div class="grid grid-cols-8"> 
+                                <div class="px-1 py-1 w-8 text-center  text-white font-bold font-raleway h-8 rounded-full bg-red-600 row-span-2">!</div>
+                                <div class="col-span-7">
+                                    <h3 class="text-red-600 font-raleway font-bold mb-3">{{ recommendation.0 }}</h3>
+                                    <p class="text-sm font-raleway text-prim-purple text-justify">{{ recommendation.1 }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <hr class="border-prim-purple mt-16">
+                        <div class="mt-7 text-right">
+                            <input type="checkbox" name="complete" id="complete" class="border border-prim-yellow bg-transparent checkbox">
+                            <label for="complete" class="text-sm text-prim-purple ml-2">Mark as <span class="font-bold">Complete</span></label>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+
+                {% if speed_recomen %}
+                <div class="recomen-list">
+                    <div class="w-full bg-prim-yellow rounded-md px-4 py-2 mt-20">
+                        <h2 class="text-white font-raleway text-xl">Load Speed</h2>
+                    </div>
+                    <div class="w-full rounded-br-md rounded-bl-md shadow-md px-6 py-9 font-raleway">
+                        <div class="grid grid-cols-3 gap-10">
+                            {% for recommendation in speed_recomen %}
+                            <div class="grid grid-cols-8"> 
+                                <div class="px-1 py-1 w-8 text-center  text-white font-bold font-raleway h-8 rounded-full bg-red-600 row-span-2">!</div>
+                                <div class="col-span-7">
+                                    <h3 class="text-red-600 font-raleway font-bold mb-3">{{ recommendation.0 }}</h3>
+                                    <p class="text-sm font-raleway text-prim-purple text-justify">{{ recommendation.1 }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <hr class="border-prim-purple mt-16">
+                        <div class="mt-7 text-right">
+                            <input type="checkbox" name="complete" id="complete" class="border border-prim-yellow bg-transparent checkbox">
+                            <label for="complete" class="text-sm text-prim-purple ml-2">Mark as <span class="font-bold">Complete</span></label>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+        <div class="text-center">
+            <button class="px-5 py-3 bg-prim-purple text-white rounded-lg mt-6 mb-10 mx-auto font-raleway font-bold" id="reloadButton">Re-Diagnose</button>
+        </div>
+    </section>
+</div>
+
+{% load static %}
+<script src="../static/js/diagnose.js"></script>
+{% endblock %}
